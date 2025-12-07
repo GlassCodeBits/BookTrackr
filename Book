@@ -1,0 +1,95 @@
+public class Book {
+// Creates instance variables
+  private String name;
+  private String author;
+  private String genre;
+  private String readingStatus; // status options include "to-be-read," "reading," "finished," and "did-not-finish."
+  private int rating; // optional; rating must be an integer between 0 and 5
+  private String review; // optional
+
+// Creates a constructor used when user does not provide input for optional fields
+  public Book(String name, String author, String genre, String readingStatus){
+    this.name = name;
+    this.author = author;
+    this.genre = genre;
+    this.readingStatus = readingStatus;
+    this.rating = 0; // a rating of 0 means the user chose not to rate the book
+    this.review = "";
+  }
+
+// Creates a constructor used when user does provide input for optional fields
+  public Book(String name, String author, String genre, String readingStatus, int rating, String review){
+    this.name = name;
+    this.author = author;
+    this.genre = genre;
+    this.readingStatus = readingStatus;
+    if (rating < 0 || rating > 5){
+      System.out.println("Invalid rating. Rating is now set to 0 until further changes are made.");
+      this.rating = 0;
+    } else {
+      this.rating = rating;
+    }
+    this.review = review;
+  }
+
+// Create getters for each field
+
+  public String getName(){
+    return name;
+  }
+
+  public String getAuthor(){
+    return author;
+  }
+
+  public String getGenre(){
+    return genre;
+  }
+
+  public String getReadingStatus(){
+    return readingStatus;
+  }
+
+  public int getRating(){
+    return rating;
+  }
+
+  public String getReview(){
+    return review;
+  }
+
+// Create setters for each field that will change as time passes (reading status, rating, and review)
+
+  public void setReadingStatus(String readingStatus){
+    this.readingStatus = readingStatus;
+  }
+
+  public void setRating(int rating){
+    if (rating < 0 || rating > 5){
+      System.out.println("Invalid rating. Please enter a rating value between 0 and 5.");
+      return;
+    }
+    this.rating = rating;
+  }
+
+  public void setReview(String review){
+    this.review = review;
+  }
+
+// Creates print method that displays all the book's information
+  public void printInfo(){
+    System.out.println("Book Title: " + name);
+    System.out.println("Author: " + author);
+    System.out.println("Genre: " + genre);
+    System.out.println("Reading Status: " + readingStatus);
+
+    if (rating > 0){
+      System.out.println("Rating: " + rating + "/5");
+    }
+
+    if (!review.isEmpty()){
+      System.out.println("Review: " + review);
+    }
+  }
+}
+
