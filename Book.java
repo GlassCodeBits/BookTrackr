@@ -23,11 +23,11 @@ public class Book implements Comparable<Book> {
         this.review = "";
     }
 
-    // Constructor with optional rating and review
+    // Constructor with optional year, rating, and review
     public Book(String name, String author, String genre, String readingStatus, int rating, String review) {
         this.name = name;
         this.author = author;
-        this.year = 0;
+        this.year = year;
         this.genre = genre;
         this.readingStatus = readingStatus;
         if (rating < 0 || rating > 5) {
