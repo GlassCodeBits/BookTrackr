@@ -1,3 +1,23 @@
-/Book.class
-/Main.class
-/BookMenu.class
+# Compiled Java class files
+*.class
+
+# Compiled output directory
+# The slash at the beginning ensures it only matches the 'bin' folder at the root of the project.
+/bin/
+
+# IDE-specific settings
+# These are user-specific and should not be committed.
+.project
+.classpath
+.settings/
+
+# VS Code specific settings that can be user-specific
+# Keeping launch.json is a good idea if the run configurations are project-specific.
+# We will keep it for now.
+# .vscode/launch.json
+# .vscode/settings.json
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
