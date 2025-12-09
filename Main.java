@@ -5,6 +5,8 @@ import java.util.*;
 // ! Main class creates and manages the BookTrackr GUI application
 public class Main {
 
+    // TODO: INCLUDE debugBox IN UML DIAGRAM 
+    // TODO: incorporate bookmenu.java into this file
     // --- Fields from UML Diagram ---
     private JFrame frame;
     private DefaultListModel<Book> listModel;
@@ -13,7 +15,7 @@ public class Main {
     private JButton sortBtn;
     private JButton removeBtn;
     private JButton openAddBookDialogBtn;
-    private JCheckBox debugBox; // TODO: ADD TO UML DIAGRAM
+    private JCheckBox debugBox; 
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

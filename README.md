@@ -1,3 +1,12 @@
+## Current todo:
++ Finish Project Description
++ Finish UML Diagram
++ Finish Test Cases
++ Make and Incorpate BookMenu.java
++ Make or decide any UI changes
++ Check char limit exception handling
++ Other stuff probably idk :D
+
 # Copy of Submission Guidelines for Project on Canvas
 
 ## Define Requirements: [10% of the Project]
