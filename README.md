@@ -5,6 +5,8 @@
 + Make and Incorpate BookMenu.java
 + Make or decide any UI changes
 + Check char limit exception handling
++ Add more genres
++ Look into icons maybe or displaying some sort of cover template
 + Other stuff probably idk :D
 
 # Copy of Submission Guidelines for Project on Canvas
