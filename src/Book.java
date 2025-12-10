@@ -1,8 +1,10 @@
 import java.util.Comparator;
+import java.util.UUID;
 
 // Book class stores info about a book including title, author, and user-provided data
 public class Book implements Comparable<Book> {
     // Core book info
+    private final UUID id;
     private String name;
     private String author;
     private int year; // ! optional; 0 will be unspecified
@@ -14,6 +16,7 @@ public class Book implements Comparable<Book> {
 
     // Constructor for basic book info without optional fields
     public Book(String name, String author, String genre, String readingStatus) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.author = author;
         this.year = 0;
@@ -25,9 +28,10 @@ public class Book implements Comparable<Book> {
 
     // Constructor with optional year, rating, and review
     public Book(String name, String author, String genre, String readingStatus, int rating, String review) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.author = author;
-        this.year = year;
+        this.year = 0;
         this.genre = genre;
         this.readingStatus = readingStatus;
         if (rating < 0 || rating > 5) {
@@ -41,6 +45,7 @@ public class Book implements Comparable<Book> {
 
     // Constructor for UI with name, author, and year only
     public Book(String name, String author, int year) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.author = author;
         this.year = year;
@@ -79,7 +84,23 @@ public class Book implements Comparable<Book> {
         return year;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
     // Setter methods for updating book information
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
     public void setReadingStatus(String readingStatus) {
         this.readingStatus = readingStatus;
     }
@@ -100,18 +121,26 @@ public class Book implements Comparable<Book> {
         this.year = year;
     }
 
+    // Returns a formatted string of detailed book information
+    public String getFormattedInfo() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Title: ").append(name).append("\n");
+        sb.append("Author: ").append(author).append("\n");
+        if (year > 0)
+            sb.append("Year: ").append(year).append("\n");
+        if (genre != null && !genre.trim().isEmpty())
+            sb.append("Genre: ").append(genre).append("\n");
+        sb.append("Status: ").append(readingStatus).append("\n");
+        if (rating > 0)
+            sb.append("Rating: ").append(rating).append("/5\n");
+        if (!review.isEmpty())
+            sb.append("Review: ").append(review).append("\n");
+        return sb.toString();
+    }
+
     // Prints detailed book information to the console
     public void printInfo() {
-        System.out.println("Book Title: " + name);
-        System.out.println("Author: " + author);
-        if (year > 0)
-            System.out.println("Year: " + year);
-        System.out.println("Genre: " + genre);
-        System.out.println("Reading Status: " + readingStatus);
-        if (rating > 0)
-            System.out.println("Rating: " + rating + "/5");
-        if (!review.isEmpty())
-            System.out.println("Review: " + review);
+        System.out.println(getFormattedInfo());
     }
 
     // Returns a formatted string for display in the UI (e.g., "Title by Author
