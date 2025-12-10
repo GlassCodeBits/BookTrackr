@@ -8,7 +8,7 @@ public class Book implements Comparable<Book> {
             "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Musical", "Mystery", "Romance",
             "Sci-Fi", "Sport", "Thriller", "War", "Western" };
 
-    public static final String[] STATUSES = { "to-be-read", "reading", "finished", "did-not-finish" };
+    public static final String[] STATUSES = { " ", "to-be-read", "reading", "finished", "did-not-finish" };
 
     // Core book info
     private final UUID id;

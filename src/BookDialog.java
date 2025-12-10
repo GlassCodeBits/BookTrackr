@@ -104,7 +104,8 @@ public class BookDialog extends JDialog {
         statusBox = new JComboBox<>(Book.STATUSES);
         c.gridx = 1;
         input.add(statusBox, c);
-        statusBox.setVisible(false); // Only visible in edit mode
+        // Show status in add mode as well; when editing populateFields() will
+        // set the selected value (and it remains visible).
 
         // Rating
         c.gridx = 0;
