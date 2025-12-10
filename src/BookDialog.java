@@ -104,8 +104,10 @@ public class BookDialog extends JDialog {
         statusBox = new JComboBox<>(Book.STATUSES);
         c.gridx = 1;
         input.add(statusBox, c);
-        // Show status in add mode as well; when editing populateFields() will
-        // set the selected value (and it remains visible).
+        // In "Add" mode show the dropdown but disable it (greyed out).
+        // When opening the dialog for editing we enable it in populateFields().
+        statusBox.setEnabled(false);
+        statusBox.setSelectedItem(Book.STATUSES[0]); // default to "to-be-read"
 
         // Rating
         c.gridx = 0;
