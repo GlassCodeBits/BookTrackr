@@ -9,19 +9,6 @@
       "name": "Main",
       "request": "launch",
       "mainClass": "Main"
-    },
-    {
-      "type": "java",
-      "name": "Attach",
-      "request": "attach",
-      "hostName": "localhost",
-      "port": "<debug port of the debuggee>"
-    },
-    {
-      "type": "java",
-      "name": "Current File",
-      "request": "launch",
-      "mainClass": "${file}"
     }
   ]
 }

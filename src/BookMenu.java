@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -94,5 +95,23 @@ public class BookMenu {
         if (book != null) {
             book.setReview(review);
         }
+    }
+
+    /**
+     * Returns a new list of all books sorted by the given key.
+     *
+     * @param sortBy One of "Title", "Author", or "Year" (case-sensitive as used in
+     *               the UI).
+     * @return A sorted ArrayList of books.
+     */
+    public ArrayList<Book> getSortedBooks(String sortBy) {
+        Comparator<Book> comp = switch (sortBy) {
+            case "Author" -> Book.BY_AUTHOR;
+            case "Year" -> Book.BY_YEAR;
+            default -> Book.BY_TITLE;
+        };
+        ArrayList<Book> list = listAllBooks();
+        list.sort(comp);
+        return list;
     }
 }

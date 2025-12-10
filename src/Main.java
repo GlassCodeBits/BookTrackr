@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
+// no direct java.util imports needed here
 
 // ! Main class creates and manages the BookTrackr GUI application
 public class Main {
@@ -18,18 +18,13 @@ public class Main {
     private JSplitPane splitPane; // Splits the main view between the book list and details.
     private JPanel rightPanel; // The panel on the right that shows book details.
     private JLabel coverPlaceholder; // A placeholder for the book cover image.
-    private JTextArea bookInfoArea; // Text area to display detailed book information.
     // --- Detail Panel Components ---
     private JLabel authorLabel, yearLabel, genreLabel, statusLabel, ratingLabel;
     private JTextArea reviewArea;
     // --- Data Management ---
     private BookMenu bookMenu;
 
-    // A constant array of genres to be used for the genre dropdowns.
-    private static final String[] GENRES = { " ", "Action", "Adventure", "Animation", "Biography", "Comedy", "Crime",
-            "Documentary",
-            "Drama", "Family", "Fantasy", "History", "Horror", "Musical", "Mystery", "Romance", "Sci-Fi", "Sport",
-            "Thriller", "War", "Western" };
+    // (Moved GENRES into Book.java as Book.GENRES)
 
     /**
      * The main entry point of the application.
@@ -176,21 +171,10 @@ public class Main {
      * Sorts the books in the list based on the criteria selected in the sortBox.
      */
     private void handleSortBooks() {
+        // Delegate sorting to BookMenu which returns a sorted list.
         String key = (String) sortBox.getSelectedItem();
-        java.util.List<Book> books = bookMenu.listAllBooks();
-
-        // Use a modern switch expression for conciseness
-        Comparator<Book> comp = switch (key) {
-            case "Author" -> Book.BY_AUTHOR;
-            case "Year" -> Book.BY_YEAR;
-            default -> Book.BY_TITLE;
-        };
-
-        books.sort(comp);
-
-        // Update the list model directly from the sorted list.
         listModel.clear();
-        for (Book b : books) {
+        for (Book b : bookMenu.getSortedBooks(key)) {
             listModel.addElement(b);
         }
     }
@@ -390,7 +374,7 @@ public class Main {
         String title = randomlet + ".Vitle " + randomNum;
         String author = randomlet + randomNum;
         int year = 2000 + rand.nextInt(100);
-        String genre = GENRES[1 + rand.nextInt(GENRES.length - 1)];
+        String genre = Book.GENRES[1 + rand.nextInt(Book.GENRES.length - 1)];
         int rating = 1 + rand.nextInt(5); // 1-5 rating
         String review = "Generic detailed text that tests multi-line + Title: '" + title + "'.\n"
                 + "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"

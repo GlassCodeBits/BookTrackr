@@ -9,10 +9,7 @@ import java.util.Optional;
 public class BookDialog extends JDialog {
 
     // --- Fields ---
-    private static final String[] GENRES = { " ", "Action", "Adventure", "Animation", "Biography", "Comedy", "Crime",
-            "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Musical", "Mystery", "Romance",
-            "Sci-Fi", "Sport", "Thriller", "War", "Western" };
-    private static final String[] STATUSES = { "to-be-read", "reading", "finished", "did-not-finish" };
+    // Use the shared constants from Book
 
     // UI Components
     private JTextField titleField, authorField, yearField, ratingField;
@@ -96,7 +93,7 @@ public class BookDialog extends JDialog {
         c.gridx = 0;
         c.gridy = 3;
         input.add(new JLabel("Genre:"), c);
-        genreBox = new JComboBox<>(GENRES);
+        genreBox = new JComboBox<>(Book.GENRES);
         c.gridx = 1;
         input.add(genreBox, c);
 
@@ -104,7 +101,7 @@ public class BookDialog extends JDialog {
         c.gridx = 0;
         c.gridy = 4;
         input.add(new JLabel("Status:"), c);
-        statusBox = new JComboBox<>(STATUSES);
+        statusBox = new JComboBox<>(Book.STATUSES);
         c.gridx = 1;
         input.add(statusBox, c);
         statusBox.setVisible(false); // Only visible in edit mode

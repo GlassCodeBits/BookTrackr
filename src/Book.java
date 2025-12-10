@@ -3,6 +3,13 @@ import java.util.UUID;
 
 // Book class stores info about a book including title, author, and user-provided data
 public class Book implements Comparable<Book> {
+    // --- Constants ---
+    public static final String[] GENRES = { " ", "Action", "Adventure", "Animation", "Biography", "Comedy", "Crime",
+            "Documentary", "Drama", "Family", "Fantasy", "History", "Horror", "Musical", "Mystery", "Romance",
+            "Sci-Fi", "Sport", "Thriller", "War", "Western" };
+
+    public static final String[] STATUSES = { "to-be-read", "reading", "finished", "did-not-finish" };
+
     // Core book info
     private final UUID id;
     private String name;
