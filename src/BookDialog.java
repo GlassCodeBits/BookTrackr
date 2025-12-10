@@ -28,6 +28,11 @@ public class BookDialog extends JDialog {
     public BookDialog(Frame owner) {
         super(owner, "Add a New Book", true);
         buildLayout();
+
+        // In "Add" mode, status is not editable and defaults to "to-be-read".
+        statusBox.setEnabled(false);
+        statusBox.setSelectedItem(Book.STATUSES[0]);
+
         setupAddActions();
         pack(); // Adjusts dialog size to fit its content
         Dimension size = getSize();
@@ -104,10 +109,6 @@ public class BookDialog extends JDialog {
         statusBox = new JComboBox<>(Book.STATUSES);
         c.gridx = 1;
         input.add(statusBox, c);
-        // In "Add" mode show the dropdown but disable it (greyed out).
-        // When opening the dialog for editing we enable it in populateFields().
-        statusBox.setEnabled(false);
-        statusBox.setSelectedItem(Book.STATUSES[0]); // default to "to-be-read"
 
         // Rating
         c.gridx = 0;
@@ -142,9 +143,6 @@ public class BookDialog extends JDialog {
         statusBox.setSelectedItem(book.getReadingStatus());
         ratingField.setText(String.valueOf(book.getRating()));
         reviewArea.setText(book.getReview());
-
-        // All fields are editable for an "edit" now
-        statusBox.setVisible(true); // Status is editable
     }
 
     /**
